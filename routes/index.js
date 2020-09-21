@@ -51,6 +51,10 @@ router.get("/auth/spotify/callback", passport.authenticate("spotify", { failureR
 
 
 router.get("/login", checkAuth);
+router.get("/logout", checkAuth, (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
 
 router.get("/", async (req, res) => {
   console.log(req.user);
